@@ -1,0 +1,11 @@
+id,review_text,date,rating,expected_sentiment,expected_category,expected_priority
+1,"App crashes every single time I try to open my settings. Completely unusable.",2026-01-15,1,Negative,Bug / Crash,Critical
+2,"Best app I've used in years. Simple, fast, exactly what I needed.",2026-01-16,5,Positive,Praise,Low
+3,"It's OK I guess. Nothing special but it works.",2026-01-17,3,Neutral,Praise,Low
+4,"Great, another crash. Love it. Really great job guys.",2026-01-18,1,Negative,Bug / Crash,Critical
+5,"The navigation is super confusing. I can never find what I'm looking for.",2026-01-19,2,Negative,UX / Design,High
+6,"Takes about 30 seconds to load anything. Way too slow.",2026-01-20,2,Negative,Performance,High
+7,"Would be amazing if you could add PDF export. That would make it perfect.",2026-01-21,4,Positive,Feature Request,Medium
+8,"$15/month for this? Are you kidding me? Way overpriced.",2026-01-22,1,Negative,Pricing / Billing,High
+9,"Took me 20 minutes just to create my first project. No tutorial, no guide, nothing.",2026-01-23,2,Negative,Onboarding,Medium
+10,"First review on the App Store lol. Just downloaded it.",2026-01-24,3,Neutral,Praise,Low
