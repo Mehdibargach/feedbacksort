@@ -1,0 +1,201 @@
+id,review_text,date,rating,expected_sentiment,expected_category,expected_priority
+12,It's a note-taking app. It does note-taking things.,2025-03-21,2,Neutral,Praise,Low
+15,Everything runs so slow. Even scrolling is choppy.,2025-05-03,1,Negative,Performance,High
+18,Recommended this to all my friends. Everyone loves it.,2026-10-01,5,Positive,Praise,Low
+20,Five stars! The team behind this app really cares.,2025-08-06,5,Positive,Praise,Low
+27,Why did you move the keyboard shortcuts button? It was fine before.,2025-11-27,1,Negative,UX / Design,Medium
+31,Constant crashes when using widgets. Very frustrating.,2025-07-19,1,Negative,Bug / Crash,Critical
+45,I cancelled but was still charged. Want my money back.,2025-04-20,1,Negative,Pricing / Billing,High
+47,This app is a game changer. So much better than competing products.,2025-06-25,5,Positive,Praise,Low
+57,I was charged twice this month. No response from support.,2026-02-01,1,Negative,Pricing / Billing,High
+62,Love the attention to detail in this app. Everything just works.,2025-07-09,5,Positive,Praise,Low
+63,This is what every app should aspire to be. Perfect.,2025-01-11,5,Positive,Praise,Low
+68,I've tried 48 other apps and this is by far the best one.,2026-07-01,5,Positive,Praise,Low
+70,First review on the App Store. Seems fine so far.,2026-07-07,3,Neutral,Praise,Low
+72,Meh. It's fine for what it is.,2025-02-24,3,Neutral,Praise,Low
+80,Why did you move the collaboration button? It was fine before.,2025-08-20,2,Negative,UX / Design,Medium
+86,Standard organization app. Nothing stands out.,2025-05-28,3,Neutral,Praise,Low
+88,This is what every app should aspire to be. Perfect.,2026-11-12,5,Positive,Praise,Low
+95,"Works as advertised. No complaints, no excitement.",2025-02-06,3,Neutral,Praise,Low
+98,Been using this for 18 months and it just keeps getting better.,2026-03-06,4,Positive,Praise,Low
+120,Decent app. Does what it says.,2026-06-11,3,Neutral,Praise,Low
+124,App crashes on startup since the last update. Can't even open it.,2025-12-03,2,Negative,Bug / Crash,Critical
+137,Amazing app! It makes sync so much easier.,2025-12-01,5,Positive,Praise,Low
+147,The premium features are not worth the $8/month price tag.,2025-10-24,1,Negative,Pricing / Billing,High
+149,The best $8 I spend every month. Worth every penny.,2025-09-01,5,Positive,Praise,Low
+158,Recommended this to all my friends. Everyone loves it.,2025-08-22,3,Positive,Praise,Low
+174,It does the basics. voice input would be a nice addition.,2026-07-09,2,Neutral,Feature Request,Low
+176,"Clean, intuitive, and fast. Exactly what an app should be.",2026-08-01,5,Positive,Praise,Low
+182,App froze and I lost 19 minutes of work. Not cool.,2025-01-21,3,Negative,Bug / Crash,Critical
+184,Absolutely love this app! It does exactly what I need.,2025-09-24,5,Positive,Praise,Low
+213,The app works but I wonder if widgets is on the roadmap.,2025-10-10,3,Neutral,Feature Request,Low
+215,This app has changed how I view history. Couldn't live without it.,2026-04-16,4,Positive,Praise,Low
+231,It's OK I guess. Nothing special but it works.,2026-01-26,2,Neutral,Praise,Low
+234,Why did you move the two-factor auth button? It was fine before.,2025-02-11,1,Negative,UX / Design,Medium
+240,The best $8 I spend every month. Worth every penny.,2025-02-09,4,Positive,Praise,Low
+241,App uses too much battery. Drains 32% in an hour.,2026-12-27,2,Negative,Performance,Medium
+246,Takes 44 seconds to load anything. Way too slow.,2025-07-17,3,Negative,Performance,High
+252,It's OK I guess. Nothing special but it works.,2025-01-09,3,Neutral,Praise,Low
+255,Been using this for 30 months and it just keeps getting better.,2025-07-09,3,Positive,Praise,Low
+265,Syncing is extremely slow. Takes 51 minutes for a simple update.,2026-01-24,1,Negative,Performance,Medium
+274,Lost all my projects because the app crashed mid-update profile. Unacceptable.,2025-09-19,1,Negative,Bug / Crash,Critical
+283,"Best app I've used in years. Simple, fast, and reliable.",2025-10-03,5,Positive,Praise,Low
+301,The fonts are way too small. Can barely read anything.,2025-10-21,3,Negative,UX / Design,High
+313,First-time experience is awful. No guidance whatsoever.,2025-01-04,1,Negative,Onboarding,Medium
+321,Way overpriced compared to alternatives. Not worth it.,2026-08-17,2,Negative,Pricing / Billing,Medium
+325,Had to watch YouTube videos just to learn basic open settings.,2025-02-10,1,Negative,Onboarding,Medium
+329,It's OK I guess. Nothing special but it works.,2025-06-17,2,Neutral,Praise,Low
+345,It's a planning app. It does planning things.,2026-04-03,2,Neutral,Praise,Low
+346,It works. Not much else to say.,2025-01-01,3,Neutral,Praise,Low
+356,First review on the App Store. Seems fine so far.,2025-08-14,3,Neutral,Praise,Low
+369,Why is the sign-up process so complicated? Just let me use the app.,2025-04-02,2,Negative,Onboarding,Medium
+375,The app works but I wonder if PDF export is on the roadmap.,2025-03-12,3,Neutral,Feature Request,Low
+394,It works. Not much else to say.,2025-06-13,3,Neutral,Praise,Low
+431,It takes forever to save. Other apps do this instantly.,2025-09-11,2,Negative,Performance,High
+433,Price went up from $8 to $30 with no new features.,2026-08-22,1,Negative,Pricing / Billing,High
+440,It's a planning app. It does planning things.,2025-10-14,2,Neutral,Praise,Low
+470,Automatic renewal without warning. Shady business practice.,2025-05-01,1,Negative,Pricing / Billing,High
+477,Amazing app! It makes upload so much easier.,2025-05-15,5,Positive,Praise,Low
+498,I've tried 55 other apps and this is by far the best one.,2026-12-28,4,Positive,Praise,Low
+519,Great work! Any plans to add multi-account? That would be awesome.,2025-03-05,3,Positive,Feature Request,Low
+521,Dark mode is broken — some text is invisible on dark backgrounds.,2025-07-01,1,Negative,UX / Design,High
+543,"Love it, but please add Apple Watch support. That would make it perfect.",2025-01-28,5,Positive,Feature Request,Medium
+548,First review on the App Store. Seems fine so far.,2025-08-10,3,Neutral,Praise,Low
+550,This is what every app should aspire to be. Perfect.,2025-10-16,5,Positive,Praise,Low
+571,I keep accidentally tapping the wrong button because they're too close together.,2025-09-06,1,Negative,UX / Design,Medium
+574,"Love it, but please add collaboration. That would make it perfect.",2025-01-17,4,Positive,Feature Request,Medium
+591,"Every time I try to export, the app just dies. So annoying.",2026-06-18,1,Negative,Bug / Crash,Critical
+593,Constant crashes when using calendar integration. Very frustrating.,2025-03-13,2,Negative,Bug / Crash,Critical
+613,Lost all my settings because the app crashed mid-login. Unacceptable.,2025-07-21,2,Negative,Bug / Crash,Critical
+634,Lost all my bookmarks because the app crashed mid-save. Unacceptable.,2025-12-10,2,Negative,Bug / Crash,Critical
+645,Outstanding quality. You can tell the developers care about their users.,2025-11-16,5,Positive,Praise,Low
+654,"Love it, but please add Apple Watch support. That would make it perfect.",2026-11-15,4,Positive,Feature Request,Medium
+656,The search takes 35 seconds to return results. Painfully slow.,2026-12-02,2,Negative,Performance,Medium
+668,"Clean, intuitive, and fast. Exactly what an app should be.",2025-08-23,5,Positive,Praise,Low
+681,I still don't understand what half the features do after a week.,2025-03-16,1,Negative,Onboarding,Medium
+690,Recommended this to all my friends. Everyone loves it.,2025-12-21,4,Positive,Praise,Low
+700,Hidden fees everywhere. This is not transparent pricing.,2025-05-06,2,Negative,Pricing / Billing,High
+710,"Average app. Not bad, not great.",2025-05-14,3,Neutral,Praise,Low
+713,Five stars! The team behind this app really cares.,2025-03-18,5,Positive,Praise,Low
+727,"Love it, but please add voice input. That would make it perfect.",2026-07-09,5,Positive,Feature Request,Medium
+731,The free tier is useless. You basically force people to pay.,2025-02-19,2,Negative,Pricing / Billing,Medium
+742,Could you consider adding custom themes? Just a suggestion.,2026-04-14,4,Neutral,Feature Request,Low
+758,"Works as advertised. No complaints, no excitement.",2025-08-03,4,Neutral,Praise,Low
+767,I've tried 25 other apps and this is by far the best one.,2025-04-13,4,Positive,Praise,Low
+770,Recommended this to all my friends. Everyone loves it.,2025-11-08,5,Positive,Praise,Low
+809,Outstanding quality. You can tell the developers care about their users.,2025-12-06,3,Positive,Praise,Low
+810,This app is a game changer. So much better than similar apps.,2025-04-22,4,Positive,Praise,Low
+813,"Love it, but please add two-factor auth. That would make it perfect.",2025-12-02,4,Positive,Feature Request,Medium
+828,App uses too much battery. Drains 8% in an hour.,2025-04-08,2,Negative,Performance,Medium
+834,Almost perfect. Just needs calendar integration and it's a 5-star app.,2025-09-15,5,Positive,Feature Request,Medium
+836,It works. Not much else to say.,2025-01-15,3,Neutral,Praise,Low
+839,Just downloaded it. Will update my review later.,2026-05-13,3,Neutral,Praise,Low
+852,The app takes 38 seconds just to start up. Way too heavy.,2025-11-21,2,Negative,Performance,High
+861,App crashes every time I try to edit. Completely unusable.,2025-04-27,3,Negative,Bug / Crash,Critical
+875,Great work! Any plans to add multi-account? That would be awesome.,2026-01-26,5,Positive,Feature Request,Low
+876,Five stars! The team behind this app really cares.,2025-10-16,5,Positive,Praise,Low
+880,Why did you move the calendar integration button? It was fine before.,2026-09-22,3,Negative,UX / Design,Medium
+896,Just downloaded it. Will update my review later.,2026-07-25,4,Neutral,Praise,Low
+897,Could you consider adding keyboard shortcuts? Just a suggestion.,2025-07-13,2,Neutral,Feature Request,Low
+902,Would be nice to have templates. Not a dealbreaker though.,2026-11-26,3,Neutral,Feature Request,Low
+930,Love the attention to detail in this app. Everything just works.,2025-10-04,3,Positive,Praise,Low
+937,Could you consider adding widgets? Just a suggestion.,2026-12-17,4,Neutral,Feature Request,Low
+943,Had to watch YouTube videos just to learn basic check notifications.,2025-09-19,2,Negative,Onboarding,Medium
+953,I've tried 50 other apps and this is by far the best one.,2025-09-13,5,Positive,Praise,Low
+960,The onboarding tutorial is useless. Doesn't explain anything.,2025-08-08,1,Negative,Onboarding,Medium
+970,"Clean, intuitive, and fast. Exactly what an app should be.",2025-04-03,3,Positive,Praise,Low
+975,"Every time I try to edit, the app just dies. So annoying.",2025-02-17,1,Negative,Bug / Crash,Critical
+979,The setup process has way too many steps. Almost gave up.,2025-05-17,3,Negative,Onboarding,Medium
+1004,Decent app. Does what it says.,2026-12-10,3,Neutral,Praise,Low
+1018,$15/month for this? Are you kidding me?,2025-12-24,1,Negative,Pricing / Billing,High
+1047,The fonts are way too small. Can barely read anything.,2025-03-16,1,Negative,UX / Design,High
+1066,I still don't understand what half the features do after a week.,2025-02-28,1,Negative,Onboarding,Medium
+1073,Could you consider adding dark mode? Just a suggestion.,2025-12-22,3,Neutral,Feature Request,Low
+1078,Constant crashes when using widgets. Very frustrating.,2025-06-20,1,Negative,Bug / Crash,Critical
+1100,It works. Not much else to say.,2025-04-13,4,Neutral,Praise,Low
+1105,Meh. It's fine for what it is.,2025-03-05,3,Neutral,Praise,Low
+1109,It does the basics. offline mode would be a nice addition.,2025-05-06,3,Neutral,Feature Request,Low
+1119,Why did you move the templates button? It was fine before.,2026-06-16,1,Negative,UX / Design,Medium
+1123,Meh. It's fine for what it is.,2025-01-06,3,Neutral,Praise,Low
+1130,This app has changed how I export. Couldn't live without it.,2025-02-16,5,Positive,Praise,Low
+1132,The premium features are not worth the $8/month price tag.,2026-02-26,1,Negative,Pricing / Billing,High
+1144,The new design is terrible. Everything looks the same.,2025-04-06,2,Negative,UX / Design,Medium
+1150,"Best app I've used in years. Simple, fast, and reliable.",2026-01-20,4,Positive,Praise,Low
+1160,Solid app. The only thing missing is the ability to upload.,2025-03-12,5,Positive,Feature Request,Medium
+1182,Standard organization app. Nothing stands out.,2025-03-28,2,Neutral,Praise,Low
+1197,Almost perfect. Just needs calendar integration and it's a 5-star app.,2025-02-17,4,Positive,Feature Request,Medium
+1198,The search takes 19 seconds to return results. Painfully slow.,2025-04-18,1,Negative,Performance,Medium
+1220,Too expensive for what it does. other tools does the same for free.,2025-08-09,3,Negative,Pricing / Billing,Medium
+1235,The best $8 I spend every month. Worth every penny.,2026-10-22,4,Positive,Praise,Low
+1251,Almost perfect. Just needs cloud backup and it's a 5-star app.,2026-04-06,4,Positive,Feature Request,Medium
+1269,Would love to see PDF export in a future update. Otherwise fantastic.,2025-06-08,5,Positive,Feature Request,Low
+1272,Great app! Would be even better with keyboard shortcuts support.,2025-08-20,5,Positive,Feature Request,Medium
+1274,Love the attention to detail in this app. Everything just works.,2025-11-19,5,Positive,Praise,Low
+1282,Memory usage is insane. My phone heats up every time I use this.,2025-08-01,2,Negative,Performance,High
+1296,Way overpriced compared to the competition. Not worth it.,2025-06-02,2,Negative,Pricing / Billing,Medium
+1337,Five stars! The team behind this app really cares.,2025-02-28,3,Positive,Praise,Low
+1348,The premium features are not worth the $8/month price tag.,2026-04-21,3,Negative,Pricing / Billing,High
+1355,The app works but I wonder if cloud backup is on the roadmap.,2026-02-26,3,Neutral,Feature Request,Low
+1366,Why did you move the voice input button? It was fine before.,2025-05-28,3,Negative,UX / Design,Medium
+1375,Would love to see widgets in a future update. Otherwise fantastic.,2025-04-23,4,Positive,Feature Request,Low
+1379,Great work! Any plans to add keyboard shortcuts? That would be awesome.,2025-04-25,5,Positive,Feature Request,Low
+1385,I've tried 25 other apps and this is by far the best one.,2025-04-19,4,Positive,Praise,Low
+1392,"Love it, but please add templates. That would make it perfect.",2025-04-25,4,Positive,Feature Request,Medium
+1406,This app is a game changer. So much better than alternatives.,2025-04-27,5,Positive,Praise,Low
+1412,First-time experience is awful. No guidance whatsoever.,2025-03-21,2,Negative,Onboarding,Medium
+1416,This is what every app should aspire to be. Perfect.,2025-02-13,5,Positive,Praise,Low
+1419,Meh. It's fine for what it is.,2025-07-07,2,Neutral,Praise,Low
+1424,Absolutely love this app! It does exactly what I need.,2025-11-12,5,Positive,Praise,Low
+1425,"Works as advertised. No complaints, no excitement.",2026-04-23,4,Neutral,Praise,Low
+1431,The navigation is so confusing. I can never find PDF export.,2025-12-03,2,Negative,UX / Design,Medium
+1436,I've been using the app for 52 days and still feel lost.,2025-08-25,2,Negative,Onboarding,Medium
+1460,App crashes on startup since the last update. Can't even open it.,2026-07-18,2,Negative,Bug / Crash,Critical
+1475,Standard planning app. Nothing stands out.,2026-05-16,3,Neutral,Praise,Low
+1476,The app is amazing. My only wish is custom themes integration.,2026-06-13,3,Positive,Feature Request,Low
+1483,This app is a game changer. So much better than other tools.,2025-09-24,4,Positive,Praise,Low
+1499,Recommended this to all my friends. Everyone loves it.,2025-02-11,5,Positive,Praise,Low
+1506,This app is a game changer. So much better than similar apps.,2025-09-12,5,Positive,Praise,Low
+1517,The onboarding tutorial is useless. Doesn't explain anything.,2025-10-24,1,Negative,Onboarding,Medium
+1529,Why is the sign-up process so complicated? Just let me use the app.,2025-11-03,2,Negative,Onboarding,Medium
+1538,Could you consider adding custom themes? Just a suggestion.,2026-03-22,4,Neutral,Feature Request,Low
+1555,It's OK I guess. Nothing special but it works.,2025-08-22,4,Neutral,Praise,Low
+1559,Five stars! The team behind this app really cares.,2025-06-20,5,Positive,Praise,Low
+1566,Constant crashes when using custom themes. Very frustrating.,2025-02-27,2,Negative,Bug / Crash,Critical
+1576,It does the basics. multi-account would be a nice addition.,2025-09-17,3,Neutral,Feature Request,Low
+1583,"Works as advertised. No complaints, no excitement.",2025-11-17,3,Neutral,Praise,Low
+1584,The app works but I wonder if custom themes is on the roadmap.,2025-06-06,4,Neutral,Feature Request,Low
+1609,The app works but I wonder if collaboration is on the roadmap.,2025-11-06,2,Neutral,Feature Request,Low
+1629,This app is a game changer. So much better than the competition.,2025-07-06,5,Positive,Praise,Low
+1637,Almost perfect. Just needs two-factor auth and it's a 5-star app.,2026-07-18,4,Positive,Feature Request,Medium
+1640,Hidden fees everywhere. This is not transparent pricing.,2025-06-12,1,Negative,Pricing / Billing,High
+1644,The new design is terrible. Everything looks the same.,2026-10-19,3,Negative,UX / Design,Medium
+1652,Too many taps to do a simple upload. Needs to be simpler.,2026-10-16,3,Negative,UX / Design,Medium
+1657,Absolutely love this app! It does exactly what I need.,2025-02-16,5,Positive,Praise,Low
+1658,Takes 33 seconds to load anything. Way too slow.,2025-03-04,1,Negative,Performance,High
+1682,The fonts are way too small. Can barely read anything.,2025-01-13,1,Negative,UX / Design,High
+1724,First review on the App Store. Seems fine so far.,2025-03-05,2,Neutral,Praise,Low
+1727,Lost all my bookmarks because the app crashed mid-update profile. Unacceptable.,2026-11-17,3,Negative,Bug / Crash,Critical
+1740,"Every time I try to share, the app just dies. So annoying.",2025-05-18,1,Negative,Bug / Crash,Critical
+1761,Almost perfect. Just needs two-factor auth and it's a 5-star app.,2026-04-08,5,Positive,Feature Request,Medium
+1763,"Love it, but please add calendar integration. That would make it perfect.",2025-01-09,3,Positive,Feature Request,Medium
+1769,First-time experience is awful. No guidance whatsoever.,2025-10-13,2,Negative,Onboarding,Medium
+1789,The fonts are way too small. Can barely read anything.,2025-12-20,3,Negative,UX / Design,High
+1812,Lost all my notes because the app crashed mid-check notifications. Unacceptable.,2025-12-28,2,Negative,Bug / Crash,Critical
+1831,Five stars! The team behind this app really cares.,2025-01-22,4,Positive,Praise,Low
+1832,App crashes every time I try to search. Completely unusable.,2025-03-14,1,Negative,Bug / Crash,Critical
+1842,Absolutely love this app! It does exactly what I need.,2025-10-16,3,Positive,Praise,Low
+1846,It does the basics. two-factor auth would be a nice addition.,2025-12-18,3,Neutral,Feature Request,Low
+1850,The premium features are not worth the $30/month price tag.,2025-11-12,1,Negative,Pricing / Billing,High
+1852,App crashes every time I try to login. Completely unusable.,2025-09-05,1,Negative,Bug / Crash,Critical
+1862,Crash after crash after crash. When will you fix this?,2026-02-22,1,Negative,Bug / Crash,Critical
+1882,The app takes 54 seconds just to start up. Way too heavy.,2025-05-06,1,Negative,Performance,High
+1895,App uses too much battery. Drains 18% in an hour.,2025-01-15,2,Negative,Performance,Medium
+1912,The search takes 12 seconds to return results. Painfully slow.,2025-12-25,3,Negative,Performance,Medium
+1916,I cancelled but was still charged. Want my money back.,2026-07-16,2,Negative,Pricing / Billing,High
+1931,Took me 3 minutes just to figure out how to get started.,2026-07-24,2,Negative,Onboarding,Medium
+1933,"Best app I've used in years. Simple, fast, and reliable.",2025-10-01,4,Positive,Praise,Low
+1939,Standard planning app. Nothing stands out.,2025-04-24,3,Neutral,Praise,Low
+1956,Decent app. Does what it says.,2025-06-19,3,Neutral,Praise,Low
+1959,Meh. It's fine for what it is.,2025-11-25,3,Neutral,Praise,Low
+1970,Crash after crash after crash. When will you fix this?,2025-11-13,3,Negative,Bug / Crash,Critical
+1972,Just downloaded it. Will update my review later.,2025-12-11,4,Neutral,Praise,Low

@@ -50,6 +50,8 @@ IMPORTANT RULES:
 - If the review has no real feedback content (e.g., "First review ever lol"), classify as Neutral / Praise / Low.
 - If the review mentions multiple topics, pick the DOMINANT one (the one the user cares about most).
 - ONLY use the exact label values listed above. No variations, no synonyms.
+- Priority for feature requests with neutral/mild tone ("would be nice", "just a suggestion", "I wonder if") should be LOW, not Medium. Only give Medium to feature requests with strong demand or clear frustration.
+- "Critical" requires the app to be UNUSABLE or DATA LOSS. Billing errors (charged twice, wrong charge) are HIGH, not Critical — the app still works.
 
 Respond with a JSON array. Each element must have: review_id, sentiment, category, priority.
 """

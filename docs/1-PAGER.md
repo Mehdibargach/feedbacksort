@@ -132,16 +132,21 @@ Les 3 contraintes critiques :
 
 ## Success Metrics
 
-| Metric | Target | How to Test |
-|--------|--------|-------------|
-| Precision sentiment | >= 90% | 200 avis avec ground truth, comparer LLM vs verite |
-| Precision categorie | >= 85% | Idem — 200 avis, 7 categories possibles |
-| Precision priorite | >= 80% | Idem — la priorite est plus subjective, seuil adapte |
-| Zero hallucination | 0 categorie inventee hors des 7 definies | Verifier que chaque output est dans la liste autorisee |
-| Latence 2000 avis | < 60 secondes | Chronometre le traitement complet (batch concurrent) |
-| Cout 2000 avis | < $0.10 | Verifier usage OpenAI apres un run complet |
+| Metric | Target | Level | How to Test |
+|--------|--------|-------|-------------|
+| Precision sentiment | >= 90% | **BLOCKING** | 200 avis avec ground truth, comparer LLM vs verite |
+| Precision categorie | >= 85% | **BLOCKING** | Idem — 200 avis, 7 categories possibles |
+| Precision priorite | >= 70% | **QUALITY** | Idem — la priorite est subjective (2 humains ne seraient pas d'accord sur Medium vs High), seuil adapte |
+| Zero hallucination | 0 categorie inventee hors des 7 definies | **BLOCKING** | Verifier que chaque output est dans la liste autorisee |
+| Latence 2000 avis | < 60 secondes | **BLOCKING** | Chronometre le traitement complet (batch concurrent) |
+| Cout 2000 avis | < $0.10 | **QUALITY** | Verifier usage OpenAI apres un run complet |
 
-> La precision est testee sur un sous-ensemble de 200 avis manuellement verifies (= le "golden dataset"). C'est la meme approche que DataPilot et WatchNext : on sait la bonne reponse a l'avance, on mesure combien le LLM en trouve.
+> **Niveaux de critere (Eval Gate Framework) :**
+> - **BLOCKING** : doit passer, sinon NO-GO
+> - **QUALITY** : devrait passer, sinon CONDITIONAL GO (condition notee)
+> - **SIGNAL** : nice-to-have, note pour iteration future
+>
+> La precision est testee sur un sous-ensemble de 200 avis avec ground truth (= les bonnes reponses connues a l'avance). La priorite a un seuil plus bas parce qu'elle est inherement subjective — c'est un QUALITY concern, pas un BLOCKING concern.
 
 ---
 

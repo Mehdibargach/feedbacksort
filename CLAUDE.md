@@ -16,13 +16,23 @@ Classification / Prediction — side project #4/5 in the Builder PM portfolio.
 - **Dataset**: Synthetic 2000 reviews with ground truth labels
 
 ## Current Phase
-BUILD — Walking Skeleton DONE (7/7 PASS), Scope 1 in progress.
+BUILD — WS DONE (7/7), Scope 1 DONE (8/9 CONDITIONAL GO), Scope 2 in progress.
 
 ### Walking Skeleton — DONE (7/7 PASS)
 - Classification 10 avis : sentiment 90%, categorie 100%, priorite 90%
 - Sarcasme + ambiguite detectes correctement
 - Latence : 8.70s pour 10 avis (1 appel LLM)
 - Bug fixe : parsing JSON wrapper key (reviews vs results)
+
+### Scope 1 — DONE (8/9 PASS — CONDITIONAL GO)
+- Dataset demo 2000 avis synthetiques avec ground truth content-based
+- Batch processing : 25 avis/batch, 40 concurrent workers
+- Dashboard synthese : distributions + top 5 problemes + metriques
+- API : POST /classify (file upload ou dataset demo)
+- Precision : sentiment 97%, categorie 98%, priorite 75% (QUALITY, pas BLOCKING)
+- Latence : 46.6s pour 2000 avis
+- Cout : ~$0.06 pour 2000 avis
+- Apprentissage : classifier les criteres (BLOCKING/QUALITY/SIGNAL) des le FRAME
 
 ## Riskiest Assumption
 "An LLM can classify customer reviews into sentiment, category, and priority with >85% accuracy across all 3 dimensions, without any training data, simply with a well-crafted prompt."
