@@ -74,3 +74,29 @@
 **Apprentissage cle :** Sur les dimensions subjectives (priorite), il faut classifier le critere (BLOCKING/QUALITY/SIGNAL) DES LE FRAME. Un seuil unique pour toutes les dimensions masque la difference entre objectif (sentiment) et subjectif (priorite). Deux humains ne seraient pas d'accord sur Medium vs High — exiger 80% du LLM est irrealiste.
 
 **1-Pager mis a jour** avec niveaux Eval Gate Framework sur chaque Success Metric.
+
+## Scope 2 — 2026-03-07
+
+**Objectif :** Produit fini — frontend Lovable, deploy Render, dashboard actionnable avec verbatims. Demo-ready.
+
+**Ce qui a ete construit :**
+- Frontend Lovable (React + Tailwind) — dark theme, 4 cartes overview, 3 charts distributions, top 5 problemes avec verbatims
+- `dashboard.py` enrichi — verbatims (3 citations par probleme), breakdown complet sentiment (positif/negatif/neutre), top PROBLEM category (negatifs seulement)
+- `api.py` mis a jour — passe les textes originaux au dashboard pour les verbatims
+- Deploy Render backend + Lovable frontend connecte
+
+**Resultats : 6/6 PASS**
+
+| Test | Critere | Resultat |
+|------|---------|----------|
+| S2-1 | Upload CSV | Drag & drop, loader, classification |
+| S2-2 | Dataset demo | 2000 avis, dashboard complet |
+| S2-3 | Dashboard visuel | Donut sentiment, bar categorie, bar priorite, labels corrects |
+| S2-4 | Top problemes | 5 problemes, badges, counts, verbatims |
+| S2-5 | Mobile responsive | Charts empiles, lisible 375px |
+| S2-6 | Deploy Render | Backend live, frontend connecte |
+
+**Bug corrige :**
+Dashboard V1 pas actionnable — "Top Category: Praise" inutile, charts avec indices (0,1,2) au lieu de labels, zero verbatim. Fix : dashboard enrichi avec verbatims + breakdown complet + top PROBLEM category (negatifs seulement). Prompt Lovable reecrit.
+
+**Apprentissage cle :** Un dashboard sans verbatims est un dashboard inutile. Les chiffres disent OU ca fait mal. Les verbatims disent QUOI exactement. Un PM qui voit "Bug/Crash Critical: 99 avis" ne sait pas quoi faire. Un PM qui voit "App crashes on startup. Can't even open it." sait quoi escalader.

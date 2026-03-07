@@ -9,14 +9,14 @@ Classification / Prediction — side project #4/5 in the Builder PM portfolio.
 ## Architecture Decisions (from 1-Pager)
 - **LLM**: GPT-4o-mini (OpenAI) — classification is a simple task, no need for GPT-4o
 - **Structured output**: JSON mode with fixed schema per review
-- **Batching**: 20 reviews per API call, 10 concurrent calls
+- **Batching**: 25 reviews per API call, 40 concurrent workers
 - **Backend**: FastAPI (Python) — same stack as DocuQuery + WatchNext + DataPilot
 - **Frontend**: Lovable (React + Tailwind) — same as previous projects
 - **Deploy**: Render ($7/mo)
 - **Dataset**: Synthetic 2000 reviews with ground truth labels
 
 ## Current Phase
-BUILD — WS DONE (7/7), Scope 1 DONE (8/9 CONDITIONAL GO), Scope 2 in progress.
+BUILD DONE → EVALUATE next. WS (7/7), Scope 1 (8/9 CONDITIONAL GO), Scope 2 (6/6 PASS).
 
 ### Walking Skeleton — DONE (7/7 PASS)
 - Classification 10 avis : sentiment 90%, categorie 100%, priorite 90%
@@ -33,6 +33,13 @@ BUILD — WS DONE (7/7), Scope 1 DONE (8/9 CONDITIONAL GO), Scope 2 in progress.
 - Latence : 46.6s pour 2000 avis
 - Cout : ~$0.06 pour 2000 avis
 - Apprentissage : classifier les criteres (BLOCKING/QUALITY/SIGNAL) des le FRAME
+
+### Scope 2 — DONE (6/6 PASS)
+- Frontend Lovable : dark theme, 4 cartes overview, 3 charts, top 5 problemes avec verbatims
+- Dashboard enrichi : verbatims (3 citations/probleme), breakdown complet, top PROBLEM category
+- Deploy : backend Render + frontend Lovable connecte, demo fonctionnelle
+- Mobile responsive : charts empiles, lisible 375px
+- Apprentissage : un dashboard sans verbatims est un dashboard inutile
 
 ## Riskiest Assumption
 "An LLM can classify customer reviews into sentiment, category, and priority with >85% accuracy across all 3 dimensions, without any training data, simply with a well-crafted prompt."
