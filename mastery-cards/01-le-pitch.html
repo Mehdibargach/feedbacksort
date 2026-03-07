@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FeedbackSort &mdash; Product Mastery Card</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f5f5f7; --bg-card: #ffffff; --bg-subtle: #f0f0f2; --bg-hover: #fafafa;
+    --border: #e0e0e4; --border-light: #ebebee;
+    --text: #1d1d1f; --text-secondary: #515154; --text-muted: #86868b;
+    --accent: #1d1d1f; --accent-bg: #f0f0f2; --accent-border: #d2d2d7;
+    --callout-bg: #f5f5f7; --callout-border: #d2d2d7; --callout-text: #1d1d1f; --callout-muted: #515154;
+    --header-bg: #1d1d1f; --header-text: #f5f5f7;
+    --pitch-bg: #1d1d1f; --pitch-text: #e8e8ed; --pitch-accent: #a1a1a6;
+    --badge-blocking-bg: #1d1d1f; --badge-blocking-text: #ffffff;
+    --badge-quality-bg: #515154; --badge-quality-text: #ffffff;
+    --badge-signal-bg: #86868b; --badge-signal-text: #ffffff;
+    --step-number-bg: #1d1d1f; --step-number-text: #ffffff;
+    --step-box-bg: #1d1d1f; --step-box-text: #ffffff;
+    --toggle-bg: rgba(0,0,0,0.06); --toggle-hover: rgba(0,0,0,0.1);
+    --code-bg: #e8e8ed;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0a0a0a; --bg-card: #141414; --bg-subtle: #1c1c1e; --bg-hover: #1c1c1e;
+    --border: #2c2c2e; --border-light: #232326;
+    --text: #f5f5f7; --text-secondary: #a1a1a6; --text-muted: #6e6e73;
+    --accent: #f5f5f7; --accent-bg: #1c1c1e; --accent-border: #3a3a3c;
+    --callout-bg: #1c1c1e; --callout-border: #2c2c2e; --callout-text: #f5f5f7; --callout-muted: #a1a1a6;
+    --header-bg: #141414; --header-text: #f5f5f7;
+    --pitch-bg: #1c1c1e; --pitch-text: #d1d1d6; --pitch-accent: #86868b;
+    --badge-blocking-bg: #f5f5f7; --badge-blocking-text: #0a0a0a;
+    --badge-quality-bg: #a1a1a6; --badge-quality-text: #0a0a0a;
+    --badge-signal-bg: #6e6e73; --badge-signal-text: #0a0a0a;
+    --step-number-bg: #f5f5f7; --step-number-text: #0a0a0a;
+    --step-box-bg: #f5f5f7; --step-box-text: #0a0a0a;
+    --toggle-bg: rgba(255,255,255,0.08); --toggle-hover: rgba(255,255,255,0.14);
+    --code-bg: #2c2c2e;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text); background: var(--bg); line-height: 1.65; font-size: 15px;
+    padding: 40px 20px; transition: background 0.3s, color 0.3s; -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+
+  .theme-toggle {
+    position: fixed; top: 20px; right: 24px; z-index: 100;
+    display: flex; align-items: center; gap: 8px;
+    background: var(--toggle-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px;
+    cursor: pointer; font-size: 13px; font-weight: 500; color: var(--text-secondary); transition: background 0.2s;
+  }
+  .theme-toggle:hover { background: var(--toggle-hover); }
+  .theme-toggle .icon { font-size: 15px; line-height: 1; }
+
+  .header {
+    background: var(--header-bg); color: var(--header-text);
+    padding: 40px 44px; border-radius: 14px; margin-bottom: 28px; border: 1px solid var(--border);
+  }
+  .header-badge {
+    display: inline-block; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
+    font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 16px; margin-bottom: 14px;
+  }
+  [data-theme="dark"] .header-badge { background: rgba(255,255,255,0.06); }
+  .header h1 { font-size: 30px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.5px; }
+  .header-subtitle { font-size: 15px; color: rgba(255,255,255,0.5); font-weight: 400; }
+
+  .section {
+    background: var(--bg-card); border-radius: 12px; padding: 32px 36px;
+    margin-bottom: 20px; border: 1px solid var(--border); transition: background 0.3s, border-color 0.3s;
+  }
+  .section-number {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; background: var(--step-number-bg); color: var(--step-number-text);
+    font-size: 13px; font-weight: 700; border-radius: 7px; margin-bottom: 12px; transition: background 0.3s, color 0.3s;
+  }
+  .section h2 { font-size: 21px; font-weight: 700; color: var(--text); margin-bottom: 18px; letter-spacing: -0.3px; }
+  .section p { margin-bottom: 14px; color: var(--text-secondary); }
+
+  .one-liner {
+    background: var(--accent-bg); border-left: 3px solid var(--accent);
+    padding: 22px 26px; border-radius: 0 10px 10px 0; margin-bottom: 20px; transition: background 0.3s, border-color 0.3s;
+  }
+  .one-liner p { font-size: 17px; font-weight: 500; color: var(--text); margin: 0; line-height: 1.5; }
+
+  table {
+    width: 100%; border-collapse: separate; border-spacing: 0;
+    margin: 14px 0; font-size: 14px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);
+  }
+  thead th {
+    background: var(--bg-subtle); color: var(--text-muted); font-weight: 600; text-align: left;
+    padding: 10px 14px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border);
+  }
+  tbody td { padding: 12px 14px; border-bottom: 1px solid var(--border-light); vertical-align: top; color: var(--text-secondary); }
+  tbody tr:last-child td { border-bottom: none; }
+  .problem-table td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; width: 200px; }
+
+  .pipeline-flow { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 26px 0; flex-wrap: wrap; }
+  .pipeline-step { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+  .pipeline-step .step-box {
+    background: var(--step-box-bg); color: var(--step-box-text);
+    font-weight: 700; font-size: 13px; padding: 10px 18px; border-radius: 8px; letter-spacing: 0.5px; transition: background 0.3s, color 0.3s;
+  }
+  .pipeline-step .step-label { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+  .pipeline-arrow { color: var(--text-muted); font-size: 18px; margin-top: -16px; }
+
+  .step-detail { border: 1px solid var(--border); border-radius: 10px; margin: 18px 0; overflow: hidden; transition: border-color 0.3s; }
+  .step-detail-header {
+    display: flex; align-items: center; gap: 10px; padding: 14px 18px;
+    background: var(--bg-subtle); border-bottom: 1px solid var(--border); transition: background 0.3s;
+  }
+  .step-detail-number {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; background: var(--step-number-bg); color: var(--step-number-text);
+    font-size: 12px; font-weight: 700; border-radius: 6px; flex-shrink: 0; transition: background 0.3s, color 0.3s;
+  }
+  .step-detail-title { font-weight: 700; font-size: 14px; color: var(--text); }
+  .step-detail-title span { font-weight: 400; color: var(--text-muted); margin-left: 6px; }
+  .step-detail-body { padding: 18px; }
+  .step-detail-body .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .col-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: var(--text-muted); }
+  .col-what p, .col-why p { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; }
+
+  .callout, .key-insight {
+    background: var(--callout-bg); border: 1px solid var(--callout-border);
+    border-radius: 8px; padding: 16px 18px; margin: 14px 0; transition: background 0.3s, border-color 0.3s;
+  }
+  .callout-title {
+    font-size: 12px; font-weight: 700; color: var(--text-muted);
+    margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.6px;
+  }
+  .callout p { font-size: 14px; color: var(--callout-muted); margin-bottom: 8px; }
+  .callout p:last-child { margin-bottom: 0; }
+  .key-insight { border-left: 3px solid var(--text-muted); border-radius: 0 8px 8px 0; }
+  .key-insight p { font-size: 14px; color: var(--callout-muted); margin-bottom: 8px; }
+  .key-insight p:last-child { margin-bottom: 0; }
+  code { background: var(--code-bg); padding: 2px 6px; border-radius: 4px; font-size: 13px; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; transition: background 0.3s; }
+
+  .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0; }
+  .metric-card {
+    border-radius: 10px; padding: 18px; text-align: center;
+    border: 1px solid var(--border); background: var(--bg-subtle); transition: background 0.3s, border-color 0.3s;
+  }
+  .metric-badge {
+    display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; padding: 3px 10px; border-radius: 10px; margin-bottom: 10px;
+  }
+  .blocking .metric-badge { background: var(--badge-blocking-bg); color: var(--badge-blocking-text); }
+  .quality .metric-badge { background: var(--badge-quality-bg); color: var(--badge-quality-text); }
+  .signal .metric-badge { background: var(--badge-signal-bg); color: var(--badge-signal-text); }
+  .metric-value { font-size: 30px; font-weight: 800; letter-spacing: -1px; margin-bottom: 4px; color: var(--text); }
+  .metric-label { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .metric-desc { font-size: 11px; color: var(--text-muted); line-height: 1.45; }
+
+  .pitch-box {
+    background: var(--pitch-bg); color: var(--pitch-text); border-radius: 10px;
+    padding: 28px 32px; margin: 18px 0; line-height: 1.7; font-size: 14px;
+    border: 1px solid var(--border); transition: background 0.3s, border-color 0.3s;
+  }
+  .pitch-box p { color: var(--pitch-text); margin-bottom: 12px; }
+  .pitch-box p:last-child { margin-bottom: 0; }
+  .pitch-box strong { color: var(--pitch-accent); }
+  [data-theme="dark"] .pitch-box strong { color: #f5f5f7; }
+
+  .questions-list { list-style: none; counter-reset: question; }
+  .questions-list li {
+    counter-increment: question; padding: 12px 14px 12px 48px; position: relative;
+    border-bottom: 1px solid var(--border-light); color: var(--text-secondary); font-size: 14px;
+  }
+  .questions-list li:last-child { border-bottom: none; }
+  .questions-list li::before {
+    content: counter(question, decimal-leading-zero); position: absolute; left: 14px; top: 12px;
+    font-size: 13px; font-weight: 800; color: var(--text-muted);
+  }
+
+  .archi-diagram {
+    background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 10px;
+    padding: 24px; margin: 18px 0; overflow-x: auto; transition: background 0.3s, border-color 0.3s;
+  }
+  .archi-diagram pre {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 12px; line-height: 1.5; color: var(--text-secondary); margin: 0; white-space: pre;
+  }
+
+  .footer { text-align: center; padding: 20px 0 12px; color: var(--text-muted); font-size: 12px; }
+  strong { font-weight: 700; }
+
+  @media (max-width: 600px) {
+    .metrics-grid { grid-template-columns: 1fr; }
+    .step-detail-body .two-col { grid-template-columns: 1fr; }
+    .pipeline-flow { flex-direction: column; }
+    .pipeline-arrow { transform: rotate(90deg); }
+  }
+
+  @media print {
+    body { background: white !important; color: #1d1d1f !important; padding: 0; font-size: 12px; }
+    .theme-toggle { display: none !important; }
+    .container { max-width: 100%; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; margin-bottom: 16px; padding: 24px 28px; }
+    .section {
+      box-shadow: none; border: 1px solid #d2d2d7; padding: 20px 24px;
+      margin-bottom: 14px; page-break-inside: avoid; background: white !important;
+    }
+    .metric-card, .callout, .key-insight, .pitch-box,
+    .pipeline-step .step-box, .section-number, .step-detail-number,
+    .metric-badge, .archi-diagram {
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="theme-toggle" onclick="toggleTheme()">
+  <span class="icon" id="theme-icon">&#9788;</span>
+  <span id="theme-label">Light</span>
+</div>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-badge">Product Mastery Card</div>
+    <h1>FeedbackSort</h1>
+    <div class="header-subtitle">Mehdi Bargach &middot; 2026</div>
+  </div>
+
+  <!-- EN 1 PHRASE -->
+  <div class="one-liner">
+    <p>Tu d&eacute;poses un fichier de 2&nbsp;000 avis clients, et tu re&ccedil;ois en 46 secondes un dashboard qui te dit exactement o&ugrave; &ccedil;a fait mal, pourquoi, et avec les mots exacts de tes clients.</p>
+  </div>
+
+  <!-- 1. LE PROBLEME -->
+  <div class="section">
+    <div class="section-number">1</div>
+    <h2>Le probl&egrave;me</h2>
+    <p><strong>Situation&nbsp;:</strong> tu es PM ou Head of Product. Tu re&ccedil;ois des avis clients de partout &mdash; App Store, Trustpilot, NPS, tickets support. Tu veux savoir ce qui ne va pas et quoi fixer en premier.</p>
+    <table class="problem-table">
+      <thead><tr><th>Option</th><th>Ce qui se passe</th><th>Pourquoi c'est cass&eacute;</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Lecture manuelle</td>
+          <td>Tu lis les 2&nbsp;000 avis un par un</td>
+          <td><strong>3 jours de travail.</strong> Personne ne le fait. Le feedback finit dans un dossier &laquo;&nbsp;&agrave; traiter&nbsp;&raquo; et n'en sort jamais.</td>
+        </tr>
+        <tr>
+          <td>Excel + filtres</td>
+          <td>Tu tries par note, tu cherches des mots-cl&eacute;s</td>
+          <td>Excel ne comprend pas le texte. &laquo;&nbsp;App crashes every morning&nbsp;&raquo; et &laquo;&nbsp;Too expensive&nbsp;&raquo; &mdash; Excel ne sait pas que l'un est un bug et l'autre du pricing.</td>
+        </tr>
+        <tr>
+          <td>Outils sp&eacute;cialis&eacute;s (MonkeyLearn, Qualtrics)</td>
+          <td>Classification automatique param&eacute;trable</td>
+          <td><strong>300 &agrave; 1&nbsp;500&nbsp;$/mois.</strong> Config complexe. Fait pour les grosses &eacute;quipes avec un budget d&eacute;di&eacute;.</td>
+        </tr>
+        <tr>
+          <td>ChatGPT (copier-coller)</td>
+          <td>Tu colles 50 avis dans le chat</td>
+          <td>Limite de contexte, pas de vue d'ensemble, pas reproductible. Tu ne peux pas y mettre 2&nbsp;000 avis.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Le vrai besoin&nbsp;:</strong> dropper un CSV d'avis et obtenir en 30 secondes une vue claire&nbsp;: quels types de probl&egrave;mes, &agrave; quelle fr&eacute;quence, avec quelle gravit&eacute;, et ce que les clients disent <em>exactement</em>.</p>
+  </div>
+
+  <!-- 2. L'ARCHITECTURE -->
+  <div class="section">
+    <div class="section-number">2</div>
+    <h2>L'architecture &mdash; Classification par lots</h2>
+
+    <p>FeedbackSort utilise un mod&egrave;le de langage (GPT-4o-mini) pour <strong>lire et &eacute;tiqueter</strong> chaque avis client selon trois dimensions&nbsp;: le sentiment (positif, n&eacute;gatif, neutre), la cat&eacute;gorie du probl&egrave;me (bug, pricing, UX, performance...), et la priorit&eacute; (critique, haute, moyenne, basse).</p>
+
+    <p><strong>L'analogie&nbsp;:</strong> imagine 2&nbsp;000 lettres de clients empil&eacute;es sur un bureau. Au lieu de les lire une par une (3 jours), tu les r&eacute;partis en <strong>80 paquets de 25 lettres</strong> et tu embauches <strong>40 lecteurs</strong> qui travaillent en m&ecirc;me temps. Chaque lecteur trie son paquet en 2 secondes. Total&nbsp;: 46 secondes au lieu de 3 jours.</p>
+
+    <div class="callout">
+      <div class="callout-title">Pourquoi GPT-4o-mini et pas GPT-4o&nbsp;?</div>
+      <p>La classification (&eacute;tiqueter un avis &laquo;&nbsp;N&eacute;gatif + Bug + Critique&nbsp;&raquo;) est une t&acirc;che simple &mdash; le mod&egrave;le n'a pas besoin de raisonner en plusieurs &eacute;tapes. GPT-4o-mini atteint <strong>97% de pr&eacute;cision</strong> sur le sentiment, pour un co&ucirc;t <strong>20 fois inf&eacute;rieur</strong> au mod&egrave;le plus puissant. On a choisi le mod&egrave;le adapt&eacute; &agrave; la difficult&eacute; de la t&acirc;che, pas le plus cher.</p>
+    </div>
+
+    <div class="pipeline-flow">
+      <div class="pipeline-step"><div class="step-box">CSV</div><div class="step-label">2&nbsp;000 avis</div></div>
+      <div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-step"><div class="step-box">D&Eacute;COUPE</div><div class="step-label">80 paquets &times; 25</div></div>
+      <div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-step"><div class="step-box">AI &times; 40</div><div class="step-label">40 en parall&egrave;le</div></div>
+      <div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-step"><div class="step-box">DASHBOARD</div><div class="step-label">distributions + verbatims</div></div>
+    </div>
+  </div>
+
+  <!-- 3. LE PIPELINE -->
+  <div class="section">
+    <div class="section-number">3</div>
+    <h2>Le pipeline &mdash; &eacute;tape par &eacute;tape</h2>
+
+    <div class="step-detail">
+      <div class="step-detail-header">
+        <div class="step-detail-number">1</div>
+        <div class="step-detail-title">Upload <span>&mdash; classifier.py</span></div>
+      </div>
+      <div class="step-detail-body">
+        <div class="two-col">
+          <div class="col-what"><div class="col-label">Ce qui se passe</div><p>L'utilisateur d&eacute;pose un CSV ou choisit le dataset de d&eacute;mo (2&nbsp;000 avis synth&eacute;tiques). Le syst&egrave;me d&eacute;tecte automatiquement quelle colonne contient le texte des avis &mdash; en mesurant la longueur moyenne de chaque colonne.</p></div>
+          <div class="col-why"><div class="col-label">Pourquoi c'est fait comme &ccedil;a</div><p>Z&eacute;ro configuration. L'utilisateur n'a pas &agrave; sp&eacute;cifier &laquo;&nbsp;la colonne texte c'est review_text&nbsp;&raquo;. Le syst&egrave;me le d&eacute;duit tout seul.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-detail">
+      <div class="step-detail-header">
+        <div class="step-detail-number">2</div>
+        <div class="step-detail-title">D&eacute;coupage en lots <span>&mdash; batch_classifier.py</span></div>
+      </div>
+      <div class="step-detail-body">
+        <div class="two-col">
+          <div class="col-what"><div class="col-label">Ce qui se passe</div><p>Les 2&nbsp;000 avis sont d&eacute;coup&eacute;s en paquets de 25. Envoyer les avis un par un au mod&egrave;le prendrait ~30 minutes. Les regrouper par paquets r&eacute;duit le nombre d'appels de 2&nbsp;000 &agrave; 80.</p></div>
+          <div class="col-why"><div class="col-label">Pourquoi 25 par paquet&nbsp;?</div><p>Test&eacute; 20 (trop de paquets, lent) et 50 (trop gros, le mod&egrave;le fait plus d'erreurs). 25 = le meilleur compromis entre vitesse et fiabilit&eacute;.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-detail">
+      <div class="step-detail-header">
+        <div class="step-detail-number">3</div>
+        <div class="step-detail-title">Classification parall&egrave;le <span>&mdash; GPT-4o-mini</span></div>
+      </div>
+      <div class="step-detail-body">
+        <div class="two-col">
+          <div class="col-what"><div class="col-label">Ce qui se passe</div><p>40 paquets sont envoy&eacute;s en m&ecirc;me temps au mod&egrave;le (au lieu d'un &agrave; la suite de l'autre). Pour chaque avis, le mod&egrave;le retourne trois &eacute;tiquettes&nbsp;: sentiment, cat&eacute;gorie, priorit&eacute;. Le tout en format structur&eacute; (JSON).</p></div>
+          <div class="col-why"><div class="col-label">Pourquoi 40 en parall&egrave;le&nbsp;?</div><p>10 en parall&egrave;le = 140 secondes. 40 en parall&egrave;le = 46 secondes. Au-del&agrave; de 40, l'API OpenAI commence &agrave; refuser des requ&ecirc;tes. 40 = le maximum avant saturation.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-detail">
+      <div class="step-detail-header">
+        <div class="step-detail-number">4</div>
+        <div class="step-detail-title">Dashboard <span>&mdash; dashboard.py</span></div>
+      </div>
+      <div class="step-detail-body">
+        <div class="two-col">
+          <div class="col-what"><div class="col-label">Ce qui se passe</div><p>Toutes les &eacute;tiquettes sont comptabilis&eacute;es&nbsp;: combien d'avis positifs, n&eacute;gatifs, neutres. Quelles cat&eacute;gories reviennent le plus. Les 5 probl&egrave;mes les plus fr&eacute;quents sont class&eacute;s, et pour chacun, 3 citations exactes de clients sont extraites.</p></div>
+          <div class="col-why"><div class="col-label">Pourquoi des citations clients&nbsp;?</div><p>Un dashboard qui dit &laquo;&nbsp;Pricing/Billing&nbsp;: 157 plaintes&nbsp;&raquo; est informatif. Un dashboard qui ajoute &laquo;&nbsp;$15/month for this? Are you kidding me?&nbsp;&raquo; est <strong>actionnable</strong>. Les chiffres disent <em>o&ugrave;</em>. Les citations disent <em>quoi</em>.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. LES METRIQUES -->
+  <div class="section">
+    <div class="section-number">4</div>
+    <h2>Les r&eacute;sultats &mdash; &eacute;valuation sur 200 avis</h2>
+
+    <p>On a test&eacute; le syst&egrave;me sur 200 avis dont on connaissait les bonnes r&eacute;ponses &agrave; l'avance. Chaque m&eacute;trique a un <strong>niveau d'importance</strong>&nbsp;:</p>
+
+    <table>
+      <thead><tr><th>Niveau</th><th>Signification</th><th>Si le test &eacute;choue</th></tr></thead>
+      <tbody>
+        <tr><td><strong>BLOCKING</strong></td><td>Doit absolument passer</td><td>On arr&ecirc;te tout, on corrige</td></tr>
+        <tr><td><strong>QUALITY</strong></td><td>Devrait passer</td><td>On continue avec une condition not&eacute;e</td></tr>
+        <tr><td><strong>SIGNAL</strong></td><td>Bonus, nice-to-have</td><td>On note pour une version future</td></tr>
+      </tbody>
+    </table>
+
+    <div class="metrics-grid">
+      <div class="metric-card blocking">
+        <div class="metric-badge">BLOCKING</div>
+        <div class="metric-value">97%</div>
+        <div class="metric-label">Sentiment</div>
+        <div class="metric-desc">Positif, n&eacute;gatif ou neutre. Le mod&egrave;le se trompe sur 6 avis sur 200.</div>
+      </div>
+      <div class="metric-card blocking">
+        <div class="metric-badge">BLOCKING</div>
+        <div class="metric-value">98%</div>
+        <div class="metric-label">Cat&eacute;gorie</div>
+        <div class="metric-desc">Bug, pricing, UX, performance... Le mod&egrave;le identifie presque toujours le bon sujet.</div>
+      </div>
+      <div class="metric-card quality">
+        <div class="metric-badge">QUALITY</div>
+        <div class="metric-value">75%</div>
+        <div class="metric-label">Priorit&eacute;</div>
+        <div class="metric-desc">Critique, haute, moyenne, basse. Le mod&egrave;le h&eacute;site entre &laquo;&nbsp;haute&nbsp;&raquo; et &laquo;&nbsp;moyenne&nbsp;&raquo; &mdash; comme deux humains le feraient.</div>
+      </div>
+      <div class="metric-card blocking">
+        <div class="metric-badge">BLOCKING</div>
+        <div class="metric-value">0</div>
+        <div class="metric-label">Hallucinations</div>
+        <div class="metric-desc">Le mod&egrave;le n'invente jamais de cat&eacute;gorie qui n'existe pas dans la liste d&eacute;finie.</div>
+      </div>
+      <div class="metric-card blocking">
+        <div class="metric-badge">BLOCKING</div>
+        <div class="metric-value">46.6s</div>
+        <div class="metric-label">Latence</div>
+        <div class="metric-desc">2&nbsp;000 avis classifi&eacute;s en moins d'une minute. Cible&nbsp;: moins de 60 secondes.</div>
+      </div>
+      <div class="metric-card quality">
+        <div class="metric-badge">QUALITY</div>
+        <div class="metric-value">$0.06</div>
+        <div class="metric-label">Co&ucirc;t</div>
+        <div class="metric-desc">6 centimes pour classifier 2&nbsp;000 avis. Cible&nbsp;: moins de 10 centimes.</div>
+      </div>
+    </div>
+
+    <div class="key-insight">
+      <p><strong>Pourquoi la priorit&eacute; est &agrave; 75% et pas 97%&nbsp;?</strong></p>
+      <p>La priorit&eacute; est <strong>subjectif</strong>. Prends l'avis &laquo;&nbsp;Takes 30 seconds to load anything&nbsp;&raquo;. Un PM dit &laquo;&nbsp;Medium &mdash; c'est lent mais &ccedil;a marche&nbsp;&raquo;. Un autre dit &laquo;&nbsp;High &mdash; c'est inutilisable &agrave; cette vitesse&nbsp;&raquo;. Les deux ont raison. Exiger 80% de pr&eacute;cision sur une dimension subjective, c'est mesurer le mod&egrave;le contre une r&eacute;ponse qui n'est pas unique.</p>
+      <p>Le sentiment (content ou pas content) est objectif &mdash; tout le monde est d'accord. La cat&eacute;gorie (bug ou pricing) est quasi-objective. La priorit&eacute; (haute ou moyenne) est une question de jugement. Les trois m&eacute;triques ne se valent pas, et un PM senior le sait <em>avant</em> de construire, pas apr&egrave;s.</p>
+    </div>
+  </div>
+
+  <!-- 5. LES DECISIONS CLES -->
+  <div class="section">
+    <div class="section-number">5</div>
+    <h2>Les d&eacute;cisions cl&eacute;s</h2>
+
+    <table>
+      <thead><tr><th>D&eacute;cision</th><th>Choix</th><th>Pourquoi</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Mod&egrave;le</strong></td>
+          <td>GPT-4o-mini (petit mod&egrave;le, rapide)</td>
+          <td>La classification est une t&acirc;che simple. Le petit mod&egrave;le atteint 97% en sentiment &agrave; un co&ucirc;t 20x inf&eacute;rieur.</td>
+        </tr>
+        <tr>
+          <td><strong>Taille des paquets</strong></td>
+          <td>25 avis par appel</td>
+          <td>Test&eacute; 20 (trop d'appels) et 50 (trop d'erreurs). 25 = le sweet spot.</td>
+        </tr>
+        <tr>
+          <td><strong>Parall&eacute;lisme</strong></td>
+          <td>40 paquets simultan&eacute;s</td>
+          <td>10 parall&egrave;les = 140s. 40 parall&egrave;les = 46s. Au-del&agrave;, l'API refuse des requ&ecirc;tes.</td>
+        </tr>
+        <tr>
+          <td><strong>Seuil de priorit&eacute;</strong></td>
+          <td>70% (QUALITY) au lieu de 80% (BLOCKING)</td>
+          <td>La priorit&eacute; est subjective &mdash; deux humains ne seraient pas d'accord sur ~25% des avis. La valeur vient du sentiment et de la cat&eacute;gorie.</td>
+        </tr>
+        <tr>
+          <td><strong>Donn&eacute;es de test</strong></td>
+          <td>Priorit&eacute; fix&eacute;e par le contenu, pas al&eacute;atoire</td>
+          <td>Le dataset original assignait la priorit&eacute; au hasard. Le mod&egrave;le avait raison et notre test avait tort. On mesurait la pr&eacute;cision contre du bruit.</td>
+        </tr>
+        <tr>
+          <td><strong>Verbatims</strong></td>
+          <td>3 citations clients par probl&egrave;me</td>
+          <td>&laquo;&nbsp;Pricing&nbsp;: 157 plaintes&nbsp;&raquo; est informatif. &laquo;&nbsp;$15/month for this?&nbsp;&raquo; est actionnable. Il faut les deux.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 6. CE QUI A CASSE -->
+  <div class="section">
+    <div class="section-number">6</div>
+    <h2>Ce qui a cass&eacute; en cours de route</h2>
+
+    <div class="step-detail">
+      <div class="step-detail-header">
+        <div class="step-detail-title">Le mod&egrave;le renvoyait les donn&eacute;es sous le mauvais nom</div>
+      </div>
+      <div class="step-detail-body">
+        <p>On attendait les r&eacute;sultats dans un champ appel&eacute; <code>results</code>, mais le mod&egrave;le les mettait dans un champ appel&eacute; <code>reviews</code>. Le syst&egrave;me ne trouvait aucune classification. Un simple probl&egrave;me de nommage qui cassait tout.</p>
+        <p><strong>Fix&nbsp;:</strong> accepter n'importe quel nom de champ et chercher les donn&eacute;es &agrave; l'int&eacute;rieur.</p>
+      </div>
+    </div>
+
+    <div class="step-detail">
+      <div class="step-detail-header">
+        <div class="step-detail-title">Deux moteurs qui tournent en m&ecirc;me temps</div>
+      </div>
+      <div class="step-detail-body">
+        <p>Le serveur web a sa propre boucle de traitement en arri&egrave;re-plan. Notre code essayait d'en d&eacute;marrer une deuxi&egrave;me &agrave; l'int&eacute;rieur &mdash; comme d&eacute;marrer un deuxi&egrave;me moteur dans une voiture d&eacute;j&agrave; en marche. L'API plantait &agrave; chaque requ&ecirc;te.</p>
+        <p><strong>Fix&nbsp;:</strong> utiliser le moteur du serveur au lieu d'en cr&eacute;er un nouveau.</p>
+      </div>
+    </div>
+
+    <div class="step-detail">
+      <div class="step-detail-header">
+        <div class="step-detail-title">Nos donn&eacute;es de test &eacute;taient fausses</div>
+      </div>
+      <div class="step-detail-body">
+        <p>Le bug le plus subtil. Notre dataset de test assignait la priorit&eacute; <strong>au hasard</strong>&nbsp;: &laquo;&nbsp;App crashes every time&nbsp;&raquo; pouvait &ecirc;tre &eacute;tiquet&eacute; &laquo;&nbsp;Low&nbsp;&raquo; par tirage al&eacute;atoire. Le mod&egrave;le lisait le contenu et disait &laquo;&nbsp;Critical&nbsp;&raquo; &mdash; ce qui &eacute;tait <em>juste</em>. On mesurait la pr&eacute;cision du mod&egrave;le contre un d&eacute; al&eacute;atoire.</p>
+        <p><strong>Fix&nbsp;:</strong> on a reconstruit les donn&eacute;es de test pour que chaque &eacute;tiquette corresponde au contenu de l'avis. &laquo;&nbsp;App crashes&nbsp;&raquo; = toujours Critical.</p>
+      </div>
+    </div>
+
+    <div class="step-detail">
+      <div class="step-detail-header">
+        <div class="step-detail-title">Le dashboard montrait des chiffres mais pas de sens</div>
+      </div>
+      <div class="step-detail-body">
+        <p>Le premier dashboard affichait &laquo;&nbsp;Top Category: Praise&nbsp;&raquo; et &laquo;&nbsp;40% negative&nbsp;&raquo;. Le PM a r&eacute;agi&nbsp;: &laquo;&nbsp;Pricing/Billing High &mdash; mais de QUOI exactement&nbsp;? Qu'est-ce qu'ils disent&nbsp;?&nbsp;&raquo; Sans citations clients, le dashboard dit o&ugrave; &ccedil;a fait mal mais pas quoi faire.</p>
+        <p><strong>Fix&nbsp;:</strong> ajout&eacute; 3 citations clients exactes sous chaque probl&egrave;me, remplac&eacute; &laquo;&nbsp;Top Category&nbsp;&raquo; par &laquo;&nbsp;Top Problem Category&nbsp;&raquo; (n&eacute;gatifs seulement), et ajout&eacute; le d&eacute;tail complet du sentiment (positif + n&eacute;gatif + neutre).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. CE QUE J'AI APPRIS -->
+  <div class="section">
+    <div class="section-number">7</div>
+    <h2>Ce que j'ai appris</h2>
+
+    <div class="key-insight">
+      <p><strong>Classer tes crit&egrave;res d'&eacute;valuation avant de construire, pas apr&egrave;s.</strong></p>
+      <p>On a fix&eacute; un seuil de 80% pour la priorit&eacute; &mdash; puis d&eacute;couvert que la priorit&eacute; est subjective. Un PM senior anticipe&nbsp;: le sentiment est objectif (tout le monde est d'accord), la priorit&eacute; est subjective (personne n'est d'accord). Il faut classer chaque m&eacute;trique d&egrave;s le d&eacute;part&nbsp;: est-ce que c'est un crit&egrave;re obligatoire, important, ou bonus&nbsp;? Cette classification change tout sur la fa&ccedil;on dont on &eacute;value le produit.</p>
+    </div>
+
+    <div class="key-insight">
+      <p><strong>Des donn&eacute;es de test fausses = une &eacute;valuation inutile.</strong></p>
+      <p>On a pass&eacute; des heures &agrave; am&eacute;liorer le prompt pour la priorit&eacute; &mdash; avant de r&eacute;aliser que nos donn&eacute;es de r&eacute;f&eacute;rence &eacute;taient du bruit al&eacute;atoire. Si tes r&eacute;ponses de r&eacute;f&eacute;rence sont fausses, toute l'&eacute;valuation est invalide. R&egrave;gle&nbsp;: corriger les donn&eacute;es d'abord, le mod&egrave;le ensuite.</p>
+    </div>
+
+    <div class="key-insight">
+      <p><strong>Les chiffres disent o&ugrave;. Les citations disent quoi.</strong></p>
+      <p>&laquo;&nbsp;Pricing/Billing&nbsp;: 157 plaintes (7.8%)&nbsp;&raquo; est informatif. &laquo;&nbsp;$15/month for this? Are you kidding me?&nbsp;&raquo; est actionnable. Un dashboard sans verbatims est un dashboard qui ne fait pas prendre de d&eacute;cisions.</p>
+    </div>
+  </div>
+
+  <!-- 8. LE PITCH INTERVIEW -->
+  <div class="section">
+    <div class="section-number">8</div>
+    <h2>Le pitch &mdash; version interview</h2>
+
+    <div class="pitch-box">
+      <p><strong>Situation&nbsp;:</strong> Je construis un portfolio de 5 produits AI, chacun illustrant une typologie diff&eacute;rente (RAG, recommandation, agent, classification, &eacute;valuation). FeedbackSort est le projet #4 &mdash; classification.</p>
+      <p><strong>Task&nbsp;:</strong> Construire un outil qui prend un CSV de 2&nbsp;000 avis clients et classifie chaque avis en sentiment, cat&eacute;gorie et priorit&eacute;, avec un dashboard actionnable &mdash; en moins de 60 secondes et pour moins de 10 centimes.</p>
+      <p><strong>Action&nbsp;:</strong> J'ai construit un pipeline de classification par lots&nbsp;: 80 paquets de 25 avis, 40 envoy&eacute;s en parall&egrave;le &agrave; GPT-4o-mini. J'ai d&eacute;couvert que nos donn&eacute;es de test assignaient la priorit&eacute; au hasard &mdash; le mod&egrave;le avait raison et nos tests avaient tort. J'ai reconstruit le dataset avec des &eacute;tiquettes bas&eacute;es sur le contenu. Le PM a demand&eacute; des citations clients &mdash; j'ai enrichi le dashboard avec 3 verbatims par probl&egrave;me.</p>
+      <p><strong>Result&nbsp;:</strong> 97% en sentiment, 98% en cat&eacute;gorie, 75% en priorit&eacute; (acceptable car subjective), 46 secondes, 6 centimes. L'apprentissage cl&eacute;&nbsp;: classer les crit&egrave;res d'&eacute;valuation (obligatoire / important / bonus) d&egrave;s la conception, pas apr&egrave;s avoir d&eacute;couvert que c'est dur.</p>
+    </div>
+  </div>
+
+  <!-- 9. QUESTIONS TEST -->
+  <div class="section">
+    <div class="section-number">9</div>
+    <h2>Questions test &mdash; v&eacute;rifie ta ma&icirc;trise</h2>
+    <p>R&eacute;ponds &agrave; chaque question <strong>sans regarder</strong> la fiche. Si tu h&eacute;sites, relis la section concern&eacute;e.</p>
+    <ul class="questions-list">
+      <li>Explique le probl&egrave;me que FeedbackSort r&eacute;sout en 2 phrases. Pourquoi Excel ne suffit pas&nbsp;?</li>
+      <li>Pourquoi avoir choisi GPT-4o-mini au lieu du mod&egrave;le plus puissant (GPT-4o)&nbsp;?</li>
+      <li>Pourquoi 25 avis par paquet et 40 paquets en parall&egrave;le&nbsp;? Quels compromis&nbsp;?</li>
+      <li>Pourquoi la pr&eacute;cision de la priorit&eacute; est-elle plus basse (75%) que le sentiment (97%)&nbsp;? Est-ce un probl&egrave;me&nbsp;?</li>
+      <li>Qu'est-ce qu'un crit&egrave;re BLOCKING vs QUALITY&nbsp;? Donne un exemple de chaque sur ce projet.</li>
+      <li>Quel &eacute;tait le bug le plus subtil du projet&nbsp;? Comment l'as-tu d&eacute;couvert et corrig&eacute;&nbsp;?</li>
+      <li>Pourquoi un dashboard sans verbatims est-il inutile&nbsp;? Donne un exemple concret.</li>
+      <li>Si tu refaisais ce projet, que changerais-tu d&egrave;s le d&eacute;part dans la phase de conception&nbsp;?</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    FeedbackSort &mdash; Mehdi Bargach &middot; Builder PM Method &middot; 2026
+  </div>
+
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  document.getElementById('theme-icon').innerHTML = next === 'dark' ? '&#9788;' : '&#9790;';
+  document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+}
+</script>
+
+</body>
+</html>
