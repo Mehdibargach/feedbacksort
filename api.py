@@ -83,8 +83,8 @@ async def classify_endpoint(
     # Classify (use async directly since we're already in an event loop)
     classifications = await classify_all_async(reviews)
 
-    # Dashboard
-    dash = compute_dashboard(classifications)
+    # Dashboard (pass reviews for verbatims)
+    dash = compute_dashboard(classifications, reviews)
 
     elapsed = time.time() - start
 
