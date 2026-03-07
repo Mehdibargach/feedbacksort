@@ -16,7 +16,7 @@ Classification / Prediction — side project #4/5 in the Builder PM portfolio.
 - **Dataset**: Synthetic 2000 reviews with ground truth labels
 
 ## Current Phase
-BUILD DONE → EVALUATE next. WS (7/7), Scope 1 (8/9 CONDITIONAL GO), Scope 2 (6/6 PASS).
+SHIP + MACRO RETRO (STOP). WS (7/7), S1 (8/9 CONDITIONAL GO), S2 (6/6 PASS). Eval: CONDITIONAL GO. Decision: STOP.
 
 ### Walking Skeleton — DONE (7/7 PASS)
 - Classification 10 avis : sentiment 90%, categorie 100%, priorite 90%
