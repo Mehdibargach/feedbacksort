@@ -81,7 +81,10 @@ async def classify_endpoint(
         reviews.append({"id": rid, "text": str(row[text_col])})
 
     # Classify (use async directly since we're already in an event loop)
-    classifications = await classify_all_async(reviews)
+    try:
+        classifications = await classify_all_async(reviews)
+    except RuntimeError as e:
+        raise HTTPException(503, f"Classification service unavailable: {e}")
 
     # Dashboard (pass reviews for verbatims)
     dash = compute_dashboard(classifications, reviews)

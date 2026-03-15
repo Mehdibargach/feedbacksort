@@ -4,12 +4,15 @@ Classifies customer reviews into sentiment, category, and priority using GPT-4o-
 """
 
 import json
+import logging
 import os
 from dotenv import load_dotenv
-from openai import OpenAI
+from openai import OpenAI, OpenAIError
 
 load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+logger = logging.getLogger(__name__)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), timeout=30.0)
 
 VALID_SENTIMENTS = ["Positive", "Negative", "Neutral"]
 VALID_CATEGORIES = [
@@ -84,18 +87,27 @@ def classify_reviews(reviews: list[dict], model: str = "gpt-4o-mini") -> list[di
     for r in reviews:
         user_prompt += f"[Review {r['id']}]: {r['text']}\n"
 
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
-        ],
-        response_format={"type": "json_object"},
-        temperature=0,
-    )
+    try:
+        response = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_prompt},
+            ],
+            response_format={"type": "json_object"},
+            temperature=0,
+        )
+    except OpenAIError as e:
+        logger.error("OpenAI API error: %s", e)
+        raise RuntimeError(f"OpenAI API error: {e}") from e
 
     raw = response.choices[0].message.content
-    parsed = json.loads(raw)
+
+    try:
+        parsed = json.loads(raw)
+    except json.JSONDecodeError as e:
+        logger.error("LLM returned invalid JSON: %s", raw[:200])
+        raise RuntimeError(f"LLM returned invalid JSON: {e}") from e
 
     # Handle various wrapper keys the LLM might use
     if isinstance(parsed, dict):

@@ -48,9 +48,11 @@ async def classify_all_async(
             return await classify_batch_async(batch, model)
 
     tasks = [process_batch(batch) for batch in batches]
-    batch_results = await asyncio.gather(*tasks)
+    batch_results = await asyncio.gather(*tasks, return_exceptions=True)
 
-    for results in batch_results:
+    for i, results in enumerate(batch_results):
+        if isinstance(results, Exception):
+            raise RuntimeError(f"Batch {i + 1}/{len(batches)} failed: {results}") from results
         all_results.extend(results)
 
     return all_results
